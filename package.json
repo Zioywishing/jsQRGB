@@ -6,6 +6,13 @@
   "main": "dist/jsqrgb.umd.js",
   "module": "dist/jsqrgb.mjs",
   "typings": "dist/lib/jsqrgb.d.ts",
+  "contributors": [
+    {
+      "name": "Miao Spring",
+      "email": "539943419@qq.com"
+    }
+  ],
+  "license": "Apache-2.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
