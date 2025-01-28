@@ -1,11 +1,11 @@
 {
   "name": "jsqrgb",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "dist/jsqrgb.umd.js",
   "module": "dist/jsqrgb.mjs",
-  "typings": "dist/lib/jsqrgb.d.ts",
+  "typings": "dist/index.d.ts",
   "contributors": [
     {
       "name": "Miao Spring",
@@ -22,7 +22,8 @@
     "@types/qrcode": "^1.5.5",
     "typescript": "~5.6.2",
     "vite": "^6.0.5",
-    "vite-plugin-dts": "^4.5.0"
+    "vite-plugin-dts": "^4.5.0",
+    "vite-plugin-mkcert": "^1.17.6"
   },
   "dependencies": {
     "jsqr": "^1.4.0",

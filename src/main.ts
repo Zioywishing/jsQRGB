@@ -26,6 +26,7 @@ const VideoFrame2ImageData = (frame: VideoFrame) => {
 const useScanner = async () => {
     const video = document.querySelector('#scanner-video') as HTMLVideoElement;
     const dataEl = document.querySelector('#scanner-data') as HTMLDivElement;
+    const scannerCanvas = document.querySelector('#scanner-canvas') as HTMLCanvasElement;
     try {
         const stream = await getVideoStream();
         if (!stream) {
@@ -44,12 +45,15 @@ const useScanner = async () => {
             if (result.done) break;
             const frameFromCamera = result.value as VideoFrame;
             const imgData = VideoFrame2ImageData(frameFromCamera);
+            scannerCanvas.width = imgData.width;
+            scannerCanvas.height = imgData.height;
+            scannerCanvas.getContext('2d')!.putImageData(imgData, 0, 0);
             const data = jsQRGB.recognize(imgData);
             frameFromCamera.close();
             if (data) {
                 const text = new TextDecoder().decode(data);
                 console.log(text);
-                text && (dataEl.innerText = `recognize data: ${text}`)
+                text && (dataEl.innerHTML = `recognize data: ${text}`)
             }
         }
     } catch (e) {

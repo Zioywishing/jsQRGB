@@ -10,7 +10,8 @@
     <input type="text" id="qrgb-input" placeholder="input qrgb data" value="test">
     <canvas id="qrgb-display"></canvas>    
     <div id="scanner-data"></div>
-    <video id="scanner-video" style="transform: scale(.3);"></video>
+    <canvas id="scanner-canvas" style="transform: scale(.3); border: 3px solid #ff0000;"></canvas>
+    <video id="scanner-video" style="transform: scale(.3); display: none;" autoplay></video>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

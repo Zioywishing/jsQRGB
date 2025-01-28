@@ -56,12 +56,11 @@ const recognize = (imageData: ImageData): Uint8Array | undefined => {
         imageDataRGB.b.data[i + 2] = rgba.b
         imageDataRGB.b.data[i + 3] = rgba.a
     }
-    // const code = jsQR(imageData?.data, imageData?.width, imageData?.height)
     const codeR = jsQR(imageDataRGB.r.data, imageDataRGB.r.width, imageDataRGB.r.height)
     const codeG = jsQR(imageDataRGB.g.data, imageDataRGB.g.width, imageDataRGB.g.height)
     const codeB = jsQR(imageDataRGB.b.data, imageDataRGB.b.width, imageDataRGB.b.height)
     if (!codeR || !codeG || !codeB) return undefined
-    const resBuffer = new Uint8Array([...codeR.binaryData, ...codeG.binaryData, ...codeB.binaryData])
+    const resBuffer = new Uint8Array([codeR.binaryData, codeG.binaryData, codeB.binaryData].sort((a, b) => a[0] - b[0]).map(arr=>arr.slice(1)).flat())
     const data = unpaddingData(resBuffer)
     return data
 }

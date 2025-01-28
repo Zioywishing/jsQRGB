@@ -24,9 +24,9 @@ const generate = (data: Uint8Array | string, options?: {
     const u8idata = typeof data === 'string' ? new TextEncoder().encode(data) : data;
     const paddedData = paddingData(u8idata);
     const rgbData = {
-        r: paddedData.slice(0, paddedData.length / 3),
-        g: paddedData.slice(paddedData.length / 3, paddedData.length / 3 * 2),
-        b: paddedData.slice(paddedData.length / 3 * 2, paddedData.length)
+        r: new Uint8Array([0, ...paddedData.slice(0, paddedData.length / 3)]),
+        g: new Uint8Array([1,...paddedData.slice(paddedData.length / 3, paddedData.length * 2 / 3)]),
+        b: new Uint8Array([2,...paddedData.slice(paddedData.length * 2 / 3, paddedData.length)])
     }
     const imgData = {
         r: generateQRCodeCanvasData(rgbData.r, { width: size, height: size }),
