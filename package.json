@@ -1,0 +1,24 @@
+{
+  "name": "jsqrgb",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/jsqrgb.umd.js",
+  "module": "dist/jsqrgb.mjs",
+  "typings": "dist/lib/jsqrgb.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.5",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.5",
+    "vite-plugin-dts": "^4.5.0"
+  },
+  "dependencies": {
+    "jsqr": "^1.4.0",
+    "qrcode": "^1.5.4"
+  }
+}
