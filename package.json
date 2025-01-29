@@ -2,7 +2,7 @@
   "name": "jsqrgb",
   "description": "A javascript package for generating and recognizing QRGB codes.",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "dist/jsqrgb.umd.js",
   "module": "dist/jsqrgb.js",

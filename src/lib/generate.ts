@@ -8,7 +8,7 @@ const generateQRCodeCanvasData = (data: Uint8Array, option: {
     width: number,
     height: number,
 }) => {
-    const canvas = document.createElement('canvas')
+    const canvas = new OffscreenCanvas(option.width, option.height)
     const ctx = canvas.getContext('2d')!
     QRCode.toCanvas(canvas, [{ data, mode: 'byte' }], option)
     const imageData = ctx.getImageData(0, 0, option.width, option.height)

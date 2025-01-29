@@ -48,7 +48,7 @@ const useScanner = async () => {
             scannerCanvas.width = imgData.width;
             scannerCanvas.height = imgData.height;
             scannerCanvas.getContext('2d')!.putImageData(imgData, 0, 0);
-            const data = jsQRGB.recognize(imgData);
+            const data = await jsQRGB.recognizeAsync(imgData);
             frameFromCamera.close();
             if (data) {
                 const text = new TextDecoder().decode(data);
@@ -71,9 +71,9 @@ async function main() {
 
     // handle input element
     const textEncoder = new TextEncoder();
-    const handleInput = () => {
+    const handleInput = async () => {
         const data = input.value;
-        const qrgbImageData = jsQRGB.generate(textEncoder.encode(data), {
+        const qrgbImageData = await jsQRGB.generateAsync(textEncoder.encode(data), {
             size: canvasSize,
         });
         ctx.putImageData(qrgbImageData, 0, 0);

@@ -27,15 +27,24 @@ npm install jsqrgb
 ```javascript
 import jsQRGB from "jsqrgb";
 
-// Recognize QRGB code
-const canvas = document.createElement('canvas')
-const ctx = canvas.getContext('2d')!;
-const imgData = ctx.getImageData(0, 0, frame.displayWidth, frame.displayHeight)
-const data = jsQRGB.recognize(imgData);
+async function main() {
+    // Recognize QRGB code
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')!;
+    const imgData = ctx.getImageData(0, 0, frame.displayWidth, frame.displayHeight)
+    const data = jsQRGB.recognize(imgData);
+    // async
+    const data = await jsQRGB.recognizeAsync(imgData);
 
-// Generate QRGB code
-const data = 'Hello World';
-const qrgbImageData = jsQRGB.generate(textEncoder.encode(data), {
-    size: canvasSize,
-});
+    // Generate QRGB code
+    const data = 'Hello World';
+    const qrgbImageData = jsQRGB.generate(textEncoder.encode(data), {
+        size: canvasSize,
+    });
+    // async
+    const qrgbImageData = await jsQRGB.generateAsync(textEncoder.encode(data), {
+        size: canvasSize,
+    });
+}
+
 ```
